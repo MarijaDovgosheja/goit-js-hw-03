@@ -1,16 +1,22 @@
-function checkForSpam(message) {
-  // Переводимо рядок у нижній регістр для перевірки незалежно від регістру символів
-  const lowerCaseMessage = message.toLowerCase();
+function filterArray(numbers, value) {
+  // Створюємо порожній масив для збереження чисел, які більші за value
+  const filteredNumbers = [];
 
-  // Перевіряємо наявність заборонених слів
-  return lowerCaseMessage.includes("spam") || lowerCaseMessage.includes("sale");
+  // Ітеруємо кожен елемент масиву numbers
+  for (let i = 0; i < numbers.length; i++) {
+    // Якщо елемент більший за value, додаємо його до filteredNumbers
+    if (numbers[i] > value) {
+      filteredNumbers.push(numbers[i]);
+    }
+  }
+
+  // Повертаємо новий масив
+  return filteredNumbers;
 }
 
-// Перевірка функції
-console.log(checkForSpam("Latest technology news")); // false
-console.log(checkForSpam("JavaScript weekly newsletter")); // false
-console.log(checkForSpam("Get the best sale offers now!")); // true
-console.log(checkForSpam("Amazing SalE, only tonight!")); // true
-console.log(checkForSpam("Trust me, this is not a spam")); // true
-console.log(checkForSpam("Get rid of SPAM emails. Our book is on sale!")); // true
-console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+// Перевірка роботи функції
+console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
+console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
+console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
+console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
+console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]

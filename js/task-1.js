@@ -1,18 +1,10 @@
-function makeTransaction(quantity, pricePerDroid, customerCredits) {
-  // Розрахунок загальної вартості замовлення
-  const totalPrice = quantity * pricePerDroid;
-
-  // Перевірка на достатню кількість коштів
-  if (totalPrice > customerCredits) {
-    return "Insufficient funds!"; // Повернення повідомлення про нестачу коштів
-  } else {
-    return `You ordered ${quantity} droids worth ${totalPrice} credits!`; // Повернення повідомлення про успішну покупку
-  }
+function slugify(title) {
+  // Приводимо рядок до нижнього регістру, розділяємо слова пробілами, а потім з'єднуємо їх тире
+  return title.toLowerCase().split(" ").join("-");
 }
 
-// Перевірка функції
-console.log(makeTransaction(5, 3000, 23000)); // "You ordered 5 droids worth 15000 credits!"
-console.log(makeTransaction(3, 1000, 15000)); // "You ordered 3 droids worth 3000 credits!"
-console.log(makeTransaction(10, 5000, 8000)); // "Insufficient funds!"
-console.log(makeTransaction(8, 2000, 10000)); // "Insufficient funds!"
-console.log(makeTransaction(10, 500, 5000));  // "You ordered 10 droids worth 5000 credits!"
+// Перевірка роботи функції
+console.log(slugify("Arrays for beginners")); // "arrays-for-beginners"
+console.log(slugify("English for developer")); // "english-for-developer"
+console.log(slugify("Ten secrets of JavaScript")); // "ten-secrets-of-javascript"
+console.log(slugify("How to become a JUNIOR developer in TWO WEEKS")); // "how-to-become-a-junior-developer-in-two-weeks"
